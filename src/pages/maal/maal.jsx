@@ -83,9 +83,16 @@ export default function RowAndColumnSpacing() {
   }
   const [reducerValue, forceUpdate] = useReducer(x => x + 1, 0)
   const [maalList, setMaalList] = useState([])
+
   useEffect(() => {
     fetchMaal().then((data) => setMaalList(data.ledger))
+    maalList.map(list =>{
+      setCountBuyers(list.buyer[0])
+      console.log(typeof(countBuyers))
+    })
+    
   }, [reducerValue])
+
   const [formData, setFormData] = React.useState({
     sellerAccountType: '', buyerAccountType: '', sellerAccountSelect: '', buyerAccountSelect: '', cropName: '', detailedWeight: '', calculatedWeight: ''
     , rate: '', netAmount: '', commission: '', commissionAmount: '', chungi: '', munshiayana: ''
@@ -404,14 +411,12 @@ export default function RowAndColumnSpacing() {
               <Typography variant="h3" component="div">Buyer</Typography>
               <div>
 
-                {maalList.map((list, id) => {
+                {/* {countBuyers.map((list, id) => { */}
 
-                  // if (!counted) { setCountBuyers(prevArray => [...prevArray, list.buyer[0].name])
-                  // counted = true
-                  // }
-                  // <Accordion expanded={expanded === "panel_buyer" + id} onChange={handleChange("panel_buyer" + id)}>
+                
+                  {/* // <Accordion expanded={expanded === "panel_buyer" + id} onChange={handleChange("panel_buyer" + id)}>
                   //   <AccordionSummary aria-controls={"panel_buyer" + id + "d-content"} id={"panel_buyer" + id + "panel1d-header"}>
-                  //     <Typography>{id}</Typography>
+                  //     <Typography>{list}</Typography>
                   //     <Typography style={{ backgroundColor: 'pink' }}>
                   //     {list.buyer[0].name} </Typography>
 
@@ -420,9 +425,9 @@ export default function RowAndColumnSpacing() {
                   //   <AccordionDetails>
 
                   //   </AccordionDetails>
-                  // </Accordion>
+                  // </Accordion> */}
 
-                })}
+                {/* })} */}
               </div>
 
             </Item>

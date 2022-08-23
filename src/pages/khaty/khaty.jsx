@@ -62,7 +62,7 @@ export default function FormDialog() {
 
     e.preventDefault();
     const { name, fatherName, location, phone, description, guarantor, accountType, accountTitle, accountNumber } = formData
-    const res = await fetch("/addAccount", {
+    const res = await fetch("https://iqbalsons-api.herokuapp.com/addAccount", {
       method: "post",
       headers: {
         "Content-Type": "application/json"

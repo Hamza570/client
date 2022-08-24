@@ -73,7 +73,7 @@ export default function RowAndColumnSpacing() {
 
   // 
   let counted = false
-  const [countBuyers, setCountBuyers] = useState([])
+  let buyers = []
 
   //Fetching Maal For given Date
 
@@ -85,12 +85,11 @@ export default function RowAndColumnSpacing() {
   const [maalList, setMaalList] = useState([])
 
   useEffect(() => {
-    fetchMaal().then((data) => setMaalList(data.ledger))
-    maalList.map(list =>{
-      setCountBuyers(list.buyer[0])
-      console.log(typeof(countBuyers))
+    fetchMaal().then((data) => {
+      
+      setMaalList(data.ledger)
     })
-    
+
   }, [reducerValue])
 
   const [formData, setFormData] = React.useState({
@@ -219,7 +218,7 @@ export default function RowAndColumnSpacing() {
           <Button variant="outlined" onClick={handleClickOpen}>
             New Maal
           </Button>
-          <Dialog open={open} onClose={handleClose} maxWidth="lg" alignItems="center">
+          <Dialog open={open} onClose={handleClose} maxWidth="lg" >
             <DialogTitle >New Maal Entry</DialogTitle>
             <DialogContent >
               {/* DateSelect */}
@@ -413,8 +412,8 @@ export default function RowAndColumnSpacing() {
 
                 {/* {countBuyers.map((list, id) => { */}
 
-                
-                  {/* // <Accordion expanded={expanded === "panel_buyer" + id} onChange={handleChange("panel_buyer" + id)}>
+
+                {/* // <Accordion expanded={expanded === "panel_buyer" + id} onChange={handleChange("panel_buyer" + id)}>
                   //   <AccordionSummary aria-controls={"panel_buyer" + id + "d-content"} id={"panel_buyer" + id + "panel1d-header"}>
                   //     <Typography>{list}</Typography>
                   //     <Typography style={{ backgroundColor: 'pink' }}>
